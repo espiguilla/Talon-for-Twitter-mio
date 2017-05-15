@@ -256,6 +256,7 @@ public class Regex {
     private static final String HASHTAG_ALPHA_NUMERIC_CHARS = "0-9\\uff10-\\uff19_" + HASHTAG_ALPHA_CHARS;
     private static final String HASHTAG_ALPHA = "[" + HASHTAG_ALPHA_CHARS +"]";
     private static final String HASHTAG_ALPHA_NUMERIC = "[" + HASHTAG_ALPHA_NUMERIC_CHARS +"]";
+    private static final String HASHTAG_SPACES = "[" + UNICODE_SPACES + "]";
 
     /* URL related hash regex collection */
     private static final String URL_VALID_PRECEEDING_CHARS = "(?:[^A-Z0-9@＠$#＃\u202A-\u202E]|^)";
@@ -273,7 +274,7 @@ public class Regex {
                     "builders|buzz|bzh|cab|camera|camp|cancerresearch|capetown|capital|cards|care|career|careers|cash|cat|catering|" +
                     "center|ceo|cheap|christmas|church|citic|claims|cleaning|click|clinic|clothing|club|codes|coffee|college|cologne|com|" +
                     "community|company|computer|condos|construction|consulting|contractors|cooking|cool|coop|country|credit|" +
-                    "creditcard|cruises|cuisinella|dance|dating|degree|democrat|dental|dentist|desi|diamonds|digital|direct|" +
+                    "creditcard|cruises|cuisinella|dance|dating|degree|democrat|dental|dentist|desi|design|diamonds|digital|direct|" +
                     "directory|discount|dnp|domains|durban|edu|education|email|engineer|engineering|enterprises|equipment|estate|" +
                     "eus|events|exchange|expert|exposed|fail|farm|feedback|finance|financial|fish|fishing|fitness|flights|florist|" +
                     "foo|foundation|frogans|fund|furniture|futbol|gal|gallery|gift|gives|glass|global|globo|gmo|gop|gov|graphics|" +
@@ -282,11 +283,11 @@ public class Regex {
                     "kim|kitchen|kiwi|koeln|kred|land|lawyer|lease|lgbt|life|lighting|limited|limo|link|loans|london|lotto|luxe|" +
                     "luxury|maison|management|mango|market|marketing|media|meet|menu|miami|mil|mini|mobi|moda|moe|monash|mortgage|" +
                     "moscow|motorcycles|museum|nagoya|name|navy|net|neustar|news|nhk|ninja|nyc|okinawa|onl|online|org|organic|ovh|paris|" +
-                    "partners|parts|photo|photography|photos|physio|pics|pictures|pink|place|plumbing|post|press|pro|productions|" +
+                    "partners|parts|party|photo|photography|photos|physio|pics|pictures|pink|place|plumbing|post|press|pro|productions|" +
                     "properties|pub|qpon|quebec|recipes|red|rehab|reise|reisen|ren|rentals|repair|report|republican|rest|reviews|" +
                     "rich|rio|rocks|rodeo|ruhr|ryukyu|saarland|schmidt|schule|scot|services|sexy|shiksha|shoes|singles|social|" +
                     "software|sohu|solar|solutions|soy|space|spiegel|supplies|supply|support|surf|surgery|suzuki|systems|tattoo|" +
-                    "tax|tech|technology|tel|tienda|tips|tirol|today|tokyo|tools|town|toys|trade|training|travel|university|uno|" +
+                    "tax|tech|technology|tel|tienda|tips|tirol|today|tokyo|tools|town|toys|trade|training|travel|trust|university|uno|" +
                     "vacations|vegas|ventures|versicherung|vet|viajes|villas|vision|vlaanderen|vodka|vote|voting|voto|voyage|wang|" +
                     "watch|webcam|website|wed|wien|wiki|works|wtc|wtf|xxx|xyz|yachts|yokohama|zone|дети|москва|онлайн|орг|сайт|" +
                     "بازار|شبكة|موقع|संगठन|みんな|世界|中信|中文网|公司|公益|商城|商标|在线|我爱你|政务|机构|游戏|移动|组织机构|网址|网络|集团|삼성" +
@@ -388,7 +389,7 @@ public class Regex {
 
   /* Begin public constants */
 
-    public static final Pattern HASHTAG_PATTERN = Pattern.compile("(#|\uFF03)(" + HASHTAG_ALPHA_NUMERIC + "*" + HASHTAG_ALPHA + HASHTAG_ALPHA_NUMERIC + "*)", Pattern.CASE_INSENSITIVE);
+    public static final Pattern HASHTAG_PATTERN = Pattern.compile("(?:^|" + HASHTAG_SPACES + ")" + "(#|\uFF03)(" + HASHTAG_ALPHA_NUMERIC + "*" + HASHTAG_ALPHA + HASHTAG_ALPHA_NUMERIC + "*)", Pattern.CASE_INSENSITIVE);
     public static final int VALID_HASHTAG_GROUP_BEFORE = 1;
     public static final int VALID_HASHTAG_GROUP_HASH = 2;
     public static final int VALID_HASHTAG_GROUP_TAG = 3;
